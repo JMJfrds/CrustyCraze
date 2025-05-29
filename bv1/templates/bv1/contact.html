@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Contact </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="text-primary m-0">Baker</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+                <a href="{% url 'about_url' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'service_url' %}" class="nav-item nav-link">Services</a>
+                <a href="{% url 'product_url' %}" class="nav-item nav-link">Products</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="{% url 'team_url' %}" class="dropdown-item">Our Team</a>
+                        <a href="{% url 'testimonial_url' %}" class="dropdown-item">Testimonial</a>
+                    </div>
+                </div>
+                <a href="{% url 'contact_url' %}" class="nav-item nav-link active">Contact</a>
+            </div>
+            <div class=" d-none d-lg-flex">
+                <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
+                    <i class="fa fa-phone text-primary"></i>
+                </div>
+                <div class="ps-3">
+                    <small class="text-primary mb-0">Call Us</small>
+                    <p class="text-light fs-5 mb-0">+998 99 707 00 92</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-white animated slideInDown mb-3">Contact Us</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="text-primary text-uppercase mb-2">// Contact Us</p>
+                <h1 class="display-6 mb-4">Agar sizda savollar bo'lsa, biz bilan bog'laning</h1>
+            </div>
+            <div class="row g-0 justify-content-center">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <form method="post" action="{% url 'contact_url' %}">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                    <label for="name">Ismingiz</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    <label for="email">Emailingiznni kiriting</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone number" required>
+                                    <label for="phone">Telefon raqamingizni kiriting</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea type = 'text' class="form-control" name="message" id="message" placeholder="Leave a message here"  style="height: 200px" required></textarea>
+                                    <label for="message">Buyurtma berish</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Google Map Start -->
+    <div class="container-xxl py-6 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        <iframe class="w-100 mb-n2" style="height: 450px;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12002.790840816411!2d69.2087393124239!3d41.22835759112443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae61fbf486a171%3A0x930c46cfb772ef28!2sPDP%20School!5e0!3m2!1sen!2s!4v1747297921660!5m2!1sen!2s"
+            frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <!-- Google Map End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Bizning manzil</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kogon, Buxoro , O'zbekiston</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+998 99 707 00 92</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>crustycraze@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="{% url 'about_url' %}" >About Us</a>
+                    <a class="btn btn-link" href="{% url 'contact_url' %}">Contact Us</a>
+                    <a class="btn btn-link" href="{% url 'service_url' %}">Our Services</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Photo Gallery</h4>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product' %}.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product_2' %}.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product_3' %}.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product_2' %}.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product_3' %}.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="{% static 'img/product' %}.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#"> Bakery </a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a> Jasmina </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
