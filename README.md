@@ -1,6 +1,6 @@
-# 🍞 Bread Bakery
+# 🍞 CrustyCraze
 
-Bread Bakery - bu nonvoyxona biznesi uchun mo'ljallangan veb-ilova bo'lib, mahsulotlarni boshqarish, buyurtmalarni qabul qilish va mijozlar bilan ishlashni osonlashtiradi.
+CrustyCraze - bu nonvoyxona biznesi uchun mo'ljallangan veb-ilova bo'lib, mahsulotlarni boshqarish, buyurtmalarni qabul qilish va mijozlar bilan ishlashni osonlashtiradi.
 
 ## 🚀 Loyiha haqida
 
