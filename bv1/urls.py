@@ -1,7 +1,4 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static 
-from Bread_Bakery import settings
 from bv1.views import HomeView, AboutView, ServiceView, ProductView, TeamView, TestimonialView, ContactView, SuccessView
 
 
@@ -14,7 +11,4 @@ urlpatterns = [
     path('testimonial/', TestimonialView.as_view(), name = 'testimonial_url'),
     path('contact/', ContactView.as_view(), name = 'contact_url'),
     path('success/', SuccessView.as_view(), name = 'success'),
-
-
-  
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

@@ -28,22 +28,31 @@ class TeamView(TemplateView):
     template_name = 'bv1/team.html'
 
 
+from django.views.generic import TemplateView
+from .models import ContactModel
+from .forms import SignUpForm
+
 class TestimonialView(TemplateView):
     template_name = 'bv1/testimonial.html'
 
-    def get(self, request):
-        form = SignUpForm()
-        return render(request, self.template_name, {'form': form})
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contacts'] = ContactModel.objects.exclude(message__isnull=True).exclude(message__exact='').order_by('-id')[:5]
+        context['form'] = SignUpForm()  # form ni ham shu yerda contextga qo‘shamiz
+        return context
+
     def post(self, request):
         form = SignUpForm(request.POST)
 
         if form.is_valid():
-            sign = form.save()
+            form.save()
             return redirect("contact_url")
         else:
-            print(form.errors)
-            return render(request, self.template_name, {'form': form})
+            # Agar xato bo‘lsa, contacts + form qaytadan render qilinadi
+            context = self.get_context_data()
+            context['form'] = form
+            return render(request, self.template_name, context)
+
 
 
 class SuccessView(TemplateView):

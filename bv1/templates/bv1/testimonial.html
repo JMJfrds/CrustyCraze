@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -81,71 +82,86 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-xxl bg-light my-6 py-6 pb-0" style="margin: 12rem 0;">
+    <div class="container-xxl bg-light my-6 py-6 pb-0 mx-auto">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="text-primary text-uppercase mb-2">// Mijozlarning biz haqimizdagi fikrlari</p>
                 <h1 class="display-6 mb-4">2000 dan ortiq mijozlar bizga ishonishgan.</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+
                 <div class="testimonial-item bg-white rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-1' %}.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-1.jpg' %}" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Maftuna Yo'ldosheva</h5>
-                            <span>42 yosh </span>
                         </div>
                     </div>
-                    <p class="mb-0">“Har kuni ertalab ishga shoshilayotib aynan shu novvoyxonadan kulcha non olaman. Yangi tandir isidan chiqqan, sedana sepilgan nonni choy bilan yeb, kunim zo‘r boshlanadi. Bunday ta’mni boshqa joyda topa olmaysiz!”.</p>
+                    <p class="mb-0">“Har kuni ertalab ishga shoshilayotib aynan shu novvoyxonadan kulcha non olaman. Yangi tandir chiqqan, sedana sepilgan nonni choy bilan yeb, kunim zo‘r boshlanadi. Bunday ta’mni boshqa joyda topa olmaysiz!”.</p>
                 </div>
+
                 <div class="testimonial-item bg-white rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-2' %}.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-2.jpg' %}" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Dilshod Avazxonov</h5>
-                            <span>30 yosh </span>
                         </div>
                     </div>
                     <p class="mb-0">“Kumushoy noni haqiqatan ham bolaligimni eslatadi! Yumshoqligi, sariyog‘i va hididan mazza qilib choy ichaman. Mehmon kelsa, faqat shu yerning nonini qo‘yaman dasturxonga. Rahmat sizlarga!”</p>
                 </div>
+
                 <div class="testimonial-item bg-white rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-3' %}.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-3.jpg' %}" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Shohjahon Alixonov</h5>
-                            <span>25 yosh </span>
+                            <span>25 yosh</span>
                         </div>
                     </div>
                     <p class="mb-0">“Novvot noningiz – bu faqat shirinlik emas, bu sevgi bilan pishirilgan asar! Bolalarim non ustida urishib qoladi. Endi har hafta albatta 3 dona olib qo‘yaman. Sizlarga omad!”</p>
                 </div>
+
                 <div class="testimonial-item bg-white rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-4' %}.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/testimonial-4.jpg' %}" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Abduxalilov Ozodbek</h5>
-                            <span>27 yosh/span>
                         </div>
                     </div>
                     <p class="mb-0">“Novvot noningiz – bu faqat shirinlik emas, bu sevgi bilan pishirilgan asar! Bolalarim non ustida urishib qoladi. Endi har hafta albatta 3 dona olib qo‘yaman. Sizlarga omad!”</p>
                 </div>
-            </div>
-            <div class="bg-primary text-light rounded-top p-5 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
-                <form method="post" action="{% url 'testimonial_url' %}">
-                    {% csrf_token %}
-                    {{ form.email.errors }}  
-                    {{ form.email }}
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h1 class="display-4 text-light mb-0">Bizning ijtimoiy tarmoqlardan kuzatib boring</h1>
-                        </div>
-                        <div class="col-md-6 text-md-end"> 
-                            <div class="position-relative">
-                                <input name="email" class="form-control bg-transparent border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                                <button  type="submit" class="btn btn-dark py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+
+                {% for item in contacts %}
+                    <div class="testimonial-item bg-white rounded p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <img class="flex-shrink-0 rounded-circle border p-1" src="{% static 'img/product.jpg' %}" alt="User">
+                            <div class="ms-4">
+                                <h5 class="mb-1">{{ item.name }}</h5>
+                                <span>{{ item.email }}</span>
                             </div>
                         </div>
+                        <p class="mb-0">{{ item.message }}</p>
                     </div>
-                </form>
+                {% endfor %}
+
+            </div>
+
+            </div>
+            <div class="bg-primary text-light rounded-top p-5 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
+            <form method="post" action="{% url 'testimonial_url' %}">
+                {% csrf_token %}
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="display-4 text-light mb-0">Bizning ijtimoiy tarmoqlardan kuzatib boring</h1>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="position-relative">
+                            {{ form.email|add_class:"form-control bg-transparent border-light w-100 py-3 ps-4 pe-5" }}
+                            <button type="submit" class="btn btn-dark py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
     </div>
@@ -211,7 +227,7 @@
                     &copy; <a href="#"> Bakery </a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    Designed By <a> Jasmina </a>
+                    Designed By <a> CONST </a>
                 </div>
             </div>
         </div>
